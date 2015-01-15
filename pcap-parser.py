@@ -20,6 +20,12 @@ for l in sys.stdin:
   d["dst"] = m1.group(3)
   d["flags"] = m1.group(4)
 
+  r_host_port = re.compile("^(.+)[.]([0-9]+)$")
+  d["src_host"] = r_host_port.search(d["src"]).group(1)
+  d["src_port"] = r_host_port.search(d["src"]).group(2)
+  d["dst_host"] = r_host_port.search(d["dst"]).group(1)
+  d["dst_port"] = r_host_port.search(d["dst"]).group(2)
+
   r2 = re.compile("^seq ([0-9]+):([0-9]+), ack ([0-9]+), win ([0-9]+), options \[(.+)\], length ([0-9]+)$")
   m2 = r2.search(m1.group(5))
   if m2:
@@ -88,5 +94,5 @@ for l in sys.stdin:
 
   a.append(d)
 
-print(json.dumps(a))
+print(json.dumps(a, indent=2))
 
