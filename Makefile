@@ -1,6 +1,9 @@
 %.tcpdump : %.pcap
 	tcpdump -tt -r $<  > $@
 
+%.json : %.tcpdump
+	./pcap-parser.py <$< >$@
+
 clean:
 	rm *.json
 

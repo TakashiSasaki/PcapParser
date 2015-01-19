@@ -23,6 +23,7 @@ for l in sys.stdin:
   r_host_port = re.compile("^(.+)[.]([0-9]+)$")
   d["src_host"] = r_host_port.search(d["src"]).group(1)
   d["src_port"] = r_host_port.search(d["src"]).group(2)
+  d["src_port"] = int(d["src_port"])
   d["dst_host"] = r_host_port.search(d["dst"]).group(1)
   d["dst_port"] = r_host_port.search(d["dst"]).group(2)
 
