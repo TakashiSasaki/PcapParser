@@ -1,3 +1,5 @@
+.PHONY: all clean
+
 %.tcpdump : %.pcap
 	tcpdump -tt -r $<  > $@
 
@@ -5,8 +7,7 @@
 	./pcap-parser.py <$< >$@
 
 clean:
-	rm *.json
+	rm -f *.json *.tcpdump
 
-all:	dump_20150115174406.pcap	
-	./pcap-parser.py 
+all:	dump_20150115174406.json
 
