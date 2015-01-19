@@ -102,6 +102,13 @@ def insert(conn, o):
     else:
       raise e
 
+  except MySQLdb.IntegrityError as e:
+    if e.args[0] == 1062:
+      pass
+    else:
+      raise e
+
+
 if __name__ == "__main__":
   conn = MySQLdb.connect(db=config.DB)
   cursor = conn.cursor()
