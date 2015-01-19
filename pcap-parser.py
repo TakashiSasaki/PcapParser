@@ -99,6 +99,24 @@ for l in sys.stdin:
     if m5 is None and m6 is None and m7 is None:
       print(d["options"])
 
+  if d["flags"] ==  ".":
+    d["flag_ack"] = True
+  elif d["flags"] ==  "S":
+    d["flag_syn"] = True
+  elif d["flags"] == "S.":
+    d["flag_syn"] = True
+    d["flag_ack"] = True
+  elif d["flags"] == "P.":
+    d["flag_push"] = True
+    d["flag_ack"] = True
+  elif d["flags"] == "FP.":
+    d["flag_push"] = True
+    d["flag_fin"] = True
+  else:
+    print("Unexpected flag set " + d["flags"] + " was detected.",file=sys.stderr)
+    exit(-1)
+
+
   if "src" in d: del d["src"]
   if "dst" in d: del d["dst"]
   if "options" in d: del d["options"]
