@@ -99,6 +99,9 @@ for l in sys.stdin:
     if m5 is None and m6 is None and m7 is None:
       print(d["options"])
 
+  if "src" in d: del d["src"]
+  if "dst" in d: del d["dst"]
+  if "options" in d: del d["options"]
   a.append(d)
 
 print(json.dumps(a, indent=2, cls=DecimalEncoder))
