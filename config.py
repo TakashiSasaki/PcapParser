@@ -1,2 +1,2 @@
 DB="pcap"
-
+TABLE="pcap"
