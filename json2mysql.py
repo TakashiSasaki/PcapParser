@@ -13,4 +13,7 @@ if __name__ == "__main__":
     for row in cursor.fetchall():
         print(row, file=sys.stderr)
  
-  
+    f = open(config.JSON_FILE)
+    o = json.load(f)
+
+    
