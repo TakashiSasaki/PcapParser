@@ -119,6 +119,7 @@ for l in sys.stdin:
 
   if "src" in d: del d["src"]
   if "dst" in d: del d["dst"]
+  if "flags" in d: del d["flags"]
   if "options" in d: del d["options"]
   a.append(d)
 
