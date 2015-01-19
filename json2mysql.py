@@ -110,7 +110,7 @@ def insert(conn, o):
 
 
 if __name__ == "__main__":
-  conn = MySQLdb.connect(db=config.DB)
+  conn = MySQLdb.connect(user=config.USER, db=config.DB)
   cursor = conn.cursor()
   sql = "show databases"
   cursor.execute(sql)
